@@ -2,22 +2,98 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Code Player</title>
+    <title>CodePlayer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        h1 {
+            padding: 0px;
+            margin: 10px;
+        }
+
+        .nav-bar {
+            background-color: lightgray;
+            padding: 0px 10px;
+            height: 60px;
+            text-align: center;
+
+        }
+
+        .logo-wrapper {
+
+            vertical-align: middle;
+            float: left;
+
+        }
+
+        .nav-button-wrapper {
+            padding-top: 15px;
+        }
+
+        .nav-button {
+            background-color: lightblue;
+            border: 1px black solid;
+            margin: -3px;
+            padding: 7px;
+            font-size: larger;
+
+        }
+
+        .nav-button:hover {
+            cursor: pointer;
+            background-color: lightskyblue;
+        }
+        .nav-button:active {
+            background-color: rgb(32, 178, 88);
+        }
+
+        .left-nav-button {
+            border-top-left-radius: 7px;
+            border-bottom-left-radius: 7px;
+        }
+
+        .right-nav-button {
+            border-top-right-radius: 7px;
+            border-bottom-right-radius: 7px;
+        }
+
+
+        .see-red {
+            background-color: red;
+        }
+
+        .see-blue {
+            background-color: blue;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
 </head>
 
 <body>
     <div class="nav-bar">
+
         <div class="logo-wrapper">
-            <h1>Code Player</h1>
+            <h1>CodePlayer</h1>
         </div>
+
         <div class="nav-button-wrapper">
+
             <button class="nav-button left-nav-button">HTML</button>
             <button class="nav-button">CSS</button>
             <button class="nav-button">JavaScript</button>
             <button class="nav-button right-nav-button">Output</button>
+
         </div>
+        <div class="clear"></div>
     </div>
     <div class="code-area-wrapper">
         <div class="code-area">
