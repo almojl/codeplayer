@@ -2,11 +2,15 @@
 
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CodePlayer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style type="text/css">
-        body {
+        body,
+        div {
             margin: 0px;
             padding: 0px;
 
@@ -20,9 +24,8 @@
         .nav-bar {
             background-color: lightgray;
             padding: 0px 10px;
+            width: 100%;
             height: 60px;
-            text-align: center;
-
         }
 
         .logo-wrapper {
@@ -34,10 +37,12 @@
 
         .nav-button-wrapper {
             padding-top: 15px;
+            width: 300px;
+            margin: 0px auto;
         }
 
         .nav-button {
-            background-color: lightblue;
+            background-color: rgb(144, 157, 161);
             border: 1px black solid;
             margin: -3px;
             padding: 7px;
@@ -49,6 +54,7 @@
             cursor: pointer;
             background-color: lightskyblue;
         }
+
         .nav-button:active {
             background-color: rgb(32, 178, 88);
         }
@@ -63,6 +69,40 @@
             border-bottom-right-radius: 7px;
         }
 
+        .active {
+            background-color: rgb(47, 197, 243);
+        }
+
+        .code-area-wrapper {
+
+            display: inline-block;
+            width: 100%;
+            padding-top: 4px;
+        }
+
+
+        .panel {
+            border-left: 1px black dashed;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            margin-top: -3px;
+            margin-right: -1px;
+            resize: none;
+            width: 25%;
+            height: 92%;
+            float: left;
+
+        }
+
+        #outputPanel {
+            background-color: rgb(250, 249, 249);
+
+        }
+
+        .panel:focus {
+            border: 4px lightskyblue solid;
+        }
 
         .see-red {
             background-color: red;
@@ -87,30 +127,48 @@
 
         <div class="nav-button-wrapper">
 
-            <button class="nav-button left-nav-button">HTML</button>
-            <button class="nav-button">CSS</button>
-            <button class="nav-button">JavaScript</button>
-            <button class="nav-button right-nav-button">Output</button>
+            <button class="nav-button left-nav-button active" id="html">HTML</button>
+            <button class="nav-button active" id="css">CSS</button>
+            <button class="nav-button active" id="js">JavaScript</button>
+            <button class="nav-button right-nav-button active" id="output">Output</button>
 
         </div>
-        <div class="clear"></div>
-    </div>
-    <div class="code-area-wrapper">
-        <div class="code-area">
-            <input id="htmlArea" class="" type="text">
-        </div>
-        <div class="code-area">
-            <input id="cssArea" class="" type="text">
-        </div>
-        <div class="code-area">
-            <input id="jsArea" class="" type="text">
-        </div>
-        <div class="code-area">
-            <input id="outputArea" class="" type="text">
-        </div>
-    </div>
-    <script>
 
+    </div>
+    <div class="clear"></div>
+    <div class="code-area-wrapper ">
+
+        <textarea id="htmlPanel" class="panel" type="text">HI</textarea>
+
+        <textarea id="cssPanel" class="panel" type="text"></textarea>
+
+        <textarea id="jsPanel" class="panel" type="text"></textarea>
+
+
+        <iframe id="outputPanel" class="panel"></iframe>
+
+    </div>
+    <script type="text/JavaScript">
+    let activePanels = 4;
+        $(".nav-button").click(function () {
+            if ($(this).hasClass("active")) {
+                $("#" + $(this).attr("id") + "Panel").hide();
+            } else {
+                $("#" + $(this).attr("id") + "Panel").show();
+            }
+
+            $(this).toggleClass("active");
+
+        });
+
+        $("#htmlPanel").on("input", function(){
+            $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
+           
+        });
+        window.onload = ()=>{
+            $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
+        };
+       
     </script>
 
 </body>
