@@ -192,19 +192,17 @@
         $(".nav-button").click(function () {
             if ($(this).hasClass("active")) {
                 $("#" + $(this).attr("id") + "PanelWrapper").hide();
-                activePanels--;
-                resizePanels();
+                activePanels--; 
             } else {
                 $("#" + $(this).attr("id") + "PanelWrapper").show();
-                activePanels++;
-                resizePanels();
+                activePanels++;  
             }
-
+            resizePanels();
             $(this).toggleClass("active");
 
         });
 
-        $("#htmlPanel").on("input", function(){
+        $("#htmlPanel").on("change keyup paste", function(){
             $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
            
         });
