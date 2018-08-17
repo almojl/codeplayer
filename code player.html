@@ -204,7 +204,14 @@
 
         $("#htmlPanel").on("change keyup paste", function(){
             $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
-           
+        });
+
+        $("#cssPanel").on("change keyup paste", function(){
+            $("#outputPanel").contents().find("head").append("<style> " + $("#cssPanel").val() + "<\/style>");
+        });
+
+        $("#jsPanel").on("change keyup paste", function(){     
+            $("#outputPanel").contents().find("body").append("<script> " +$("#jsPanel").val()+ "<\/script>");
         });
         
         function resizePanels(){
