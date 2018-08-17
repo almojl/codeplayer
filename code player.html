@@ -149,12 +149,22 @@
 
     </div>
     <script type="text/JavaScript">
-    let activePanels = 4;
+        let activePanels = 4;
+
+        window.onload = () => {
+            $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
+            activePanels = $(".active").length;
+        };
+
         $(".nav-button").click(function () {
             if ($(this).hasClass("active")) {
                 $("#" + $(this).attr("id") + "Panel").hide();
+                activePanels--;
+                resizePanels();
             } else {
                 $("#" + $(this).attr("id") + "Panel").show();
+                activePanels++;
+                resizePanels();
             }
 
             $(this).toggleClass("active");
@@ -165,10 +175,11 @@
             $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
            
         });
-        window.onload = ()=>{
-            $("#outputPanel").contents().find("html").html($("#htmlPanel").val());
-        };
-       
+        
+        function resizePanels(){
+            $(".panel").css("width", (100/activePanels) + "%");
+        }
+
     </script>
 
 </body>
