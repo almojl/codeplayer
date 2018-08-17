@@ -78,8 +78,14 @@
             display: inline-block;
             width: 100%;
             padding-top: 4px;
+            padding-left: 2px;
         }
-
+        
+        .panel-wrapper {
+            width: 25%;
+            height: 92%;
+            float: left;  
+        }
 
         .panel {
             border-left: 1px black dashed;
@@ -89,19 +95,34 @@
             margin-top: -3px;
             margin-right: -1px;
             resize: none;
-            width: 25%;
-            height: 92%;
-            float: left;
-
+            width: 100%;
+            height: 100%;
+            font-family: sans-serif;
         }
 
         #outputPanel {
             background-color: rgb(250, 249, 249);
-
         }
 
         .panel:focus {
             border: 4px lightskyblue solid;
+        }
+
+        .floatLeft {
+
+            float: left;
+        }
+
+        .floatTop {
+
+            float: top;
+        }
+
+        .panelTitle {
+            font-family: sans-serif;
+            font-size: 100%;
+            margin: 4px;
+            margin-bottom: 8px;
         }
 
         .see-red {
@@ -136,16 +157,28 @@
 
     </div>
     <div class="clear"></div>
-    <div class="code-area-wrapper ">
+    <div class="code-area-wrapper">
 
-        <textarea id="htmlPanel" class="panel" type="text">HI</textarea>
+        <div class=" panel-wrapper" id="htmlPanelWrapper">
+            <h3 class="floatTop panelTitle">HTML:</h3>
+            <textarea id="htmlPanel" class="panel" type="text">HI</textarea>
+        </div>
 
-        <textarea id="cssPanel" class="panel" type="text"></textarea>
+        <div class=" panel-wrapper" id="cssPanelWrapper" >
+            <h3 class="floatTop panelTitle">CSS:</h3>
+            <textarea id="cssPanel" class="panel" type="text"></textarea>
+        </div>
 
-        <textarea id="jsPanel" class="panel" type="text"></textarea>
+        <div class="panel-wrapper" id="jsPanelWrapper" >
+            <h3 class="floatTop panelTitle">JavaScript:</h3>
+            <textarea id="jsPanel" class="panel" type="text"></textarea>
+        </div>
 
 
-        <iframe id="outputPanel" class="panel"></iframe>
+        <div class="panel-wrapper" id="outputPanelWrapper" >
+            <h3 class="floatTop panelTitle">Output:</h3>
+            <iframe id="outputPanel" class="panel"></iframe>
+        </div>
 
     </div>
     <script type="text/JavaScript">
@@ -158,11 +191,11 @@
 
         $(".nav-button").click(function () {
             if ($(this).hasClass("active")) {
-                $("#" + $(this).attr("id") + "Panel").hide();
+                $("#" + $(this).attr("id") + "PanelWrapper").hide();
                 activePanels--;
                 resizePanels();
             } else {
-                $("#" + $(this).attr("id") + "Panel").show();
+                $("#" + $(this).attr("id") + "PanelWrapper").show();
                 activePanels++;
                 resizePanels();
             }
@@ -177,7 +210,7 @@
         });
         
         function resizePanels(){
-            $(".panel").css("width", (100/activePanels) + "%");
+            $(".panel-wrapper").css("width", (100/activePanels) + "%");
         }
 
     </script>
